@@ -3375,11 +3375,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\TramsA6\\BusinessLayer\\BusinessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\BusinessLayer\\BusinessLayer.csproj",
       "projectName": "BusinessLayer",
-      "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\BusinessLayer\\BusinessLayer.csproj",
+      "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\BusinessLayer\\BusinessLayer.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\BusinessLayer\\obj\\",
+      "outputPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3398,8 +3398,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\Persistence.csproj"
+            "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Persistence\\Persistence.csproj"
             }
           }
         }

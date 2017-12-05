@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TramsA6", "TramsA6\TramsA6.csproj", "{45373A96-D7A8-44B4-9EB3-FE4DF8B2C607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Data\Domain.csproj", "{64180C2F-881A-48A5-BA7F-715881C1CB23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Data\Domain.csproj", "{64180C2F-881A-48A5-BA7F-715881C1CB23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{BB0D2114-7A14-473F-8FDB-DEE1F5813F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{BB0D2114-7A14-473F-8FDB-DEE1F5813F99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{868BB397-5B7A-4D32-AD3B-164F8A06F6EE}"
 EndProject
@@ -15,7 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4BF0706E-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6342F82A-68B3-429B-977E-84399B9EB824}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{78788134-11DF-4EDE-88B7-073483CBBDA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{78788134-11DF-4EDE-88B7-073483CBBDA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A0510990-8523-4093-AD3C-9870E85FE11E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{09264024-35E1-4B1A-85B5-E261D75E102C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{78788134-11DF-4EDE-88B7-073483CBBDA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78788134-11DF-4EDE-88B7-073483CBBDA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78788134-11DF-4EDE-88B7-073483CBBDA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09264024-35E1-4B1A-85B5-E261D75E102C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09264024-35E1-4B1A-85B5-E261D75E102C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09264024-35E1-4B1A-85B5-E261D75E102C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09264024-35E1-4B1A-85B5-E261D75E102C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 		{64180C2F-881A-48A5-BA7F-715881C1CB23} = {4BF0706E-C215-44F9-A51F-F4053B243D5A}
 		{BB0D2114-7A14-473F-8FDB-DEE1F5813F99} = {868BB397-5B7A-4D32-AD3B-164F8A06F6EE}
 		{78788134-11DF-4EDE-88B7-073483CBBDA1} = {4BF0706E-C215-44F9-A51F-F4053B243D5A}
+		{09264024-35E1-4B1A-85B5-E261D75E102C} = {A0510990-8523-4093-AD3C-9870E85FE11E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {004D4CD7-C0B6-4627-BE3E-1E1623E867CB}

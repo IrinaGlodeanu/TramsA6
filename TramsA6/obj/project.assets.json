@@ -12711,11 +12711,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\TramsA6\\TramsA6\\TramsA6.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\TramsA6\\TramsA6.csproj",
       "projectName": "TramsA6",
-      "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\TramsA6\\TramsA6.csproj",
+      "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\TramsA6\\TramsA6.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\TramsA6\\obj\\",
+      "outputPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\TramsA6\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12734,11 +12734,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\pc\\source\\repos\\TramsA6\\BusinessLayer\\BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\BusinessLayer\\BusinessLayer.csproj"
+            "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\BusinessLayer\\BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\BusinessLayer\\BusinessLayer.csproj"
             },
-            "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj": {
-              "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj"
+            "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Data\\Domain.csproj": {
+              "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Data\\Domain.csproj"
             }
           }
         }

@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Data\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj",
+      "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Data\\Domain.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\obj\\",
+      "outputPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

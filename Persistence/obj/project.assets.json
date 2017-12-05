@@ -3357,11 +3357,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Persistence\\Persistence.csproj",
       "projectName": "Persistence",
-      "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\Persistence.csproj",
+      "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Persistence\\Persistence.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\obj\\",
+      "outputPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3380,8 +3380,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj": {
-              "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj"
+            "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Data\\Domain.csproj": {
+              "projectPath": "C:\\Users\\pc\\source\\repos\\DotNetProject\\TramsA6\\Data\\Domain.csproj"
             }
           }
         }
