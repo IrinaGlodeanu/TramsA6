@@ -1,0 +1,13 @@
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.deps.json
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.dll
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.pdb
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.AssemblyInfo.cs
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.dll
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.pdb
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Domain.dll
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Persistence.dll
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Persistence.pdb
+C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Domain.pdb

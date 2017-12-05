@@ -1,0 +1,17 @@
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\TramsA6.deps.json
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\TramsA6.runtimeconfig.json
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\TramsA6.runtimeconfig.dev.json
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\TramsA6.dll
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\TramsA6.pdb
+C:\Users\pc\source\repos\TramsA6\TramsA6\obj\Debug\netcoreapp2.0\TramsA6.csprojResolveAssemblyReference.cache
+C:\Users\pc\source\repos\TramsA6\TramsA6\obj\Debug\netcoreapp2.0\TramsA6.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\TramsA6\TramsA6\obj\Debug\netcoreapp2.0\TramsA6.AssemblyInfoInputs.cache
+C:\Users\pc\source\repos\TramsA6\TramsA6\obj\Debug\netcoreapp2.0\TramsA6.AssemblyInfo.cs
+C:\Users\pc\source\repos\TramsA6\TramsA6\obj\Debug\netcoreapp2.0\TramsA6.dll
+C:\Users\pc\source\repos\TramsA6\TramsA6\obj\Debug\netcoreapp2.0\TramsA6.pdb
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\BusinessLayer.dll
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\Domain.dll
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\Persistence.dll
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\BusinessLayer.pdb
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\Domain.pdb
+C:\Users\pc\source\repos\TramsA6\TramsA6\bin\Debug\netcoreapp2.0\Persistence.pdb

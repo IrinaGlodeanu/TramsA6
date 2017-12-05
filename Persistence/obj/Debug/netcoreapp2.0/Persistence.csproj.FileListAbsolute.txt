@@ -1,0 +1,11 @@
+C:\Users\pc\source\repos\TramsA6\Persistence\bin\Debug\netcoreapp2.0\Persistence.deps.json
+C:\Users\pc\source\repos\TramsA6\Persistence\bin\Debug\netcoreapp2.0\Persistence.dll
+C:\Users\pc\source\repos\TramsA6\Persistence\bin\Debug\netcoreapp2.0\Persistence.pdb
+C:\Users\pc\source\repos\TramsA6\Persistence\obj\Debug\netcoreapp2.0\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\pc\source\repos\TramsA6\Persistence\obj\Debug\netcoreapp2.0\Persistence.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\TramsA6\Persistence\obj\Debug\netcoreapp2.0\Persistence.AssemblyInfoInputs.cache
+C:\Users\pc\source\repos\TramsA6\Persistence\obj\Debug\netcoreapp2.0\Persistence.AssemblyInfo.cs
+C:\Users\pc\source\repos\TramsA6\Persistence\obj\Debug\netcoreapp2.0\Persistence.dll
+C:\Users\pc\source\repos\TramsA6\Persistence\obj\Debug\netcoreapp2.0\Persistence.pdb
+C:\Users\pc\source\repos\TramsA6\Persistence\bin\Debug\netcoreapp2.0\Domain.dll
+C:\Users\pc\source\repos\TramsA6\Persistence\bin\Debug\netcoreapp2.0\Domain.pdb
