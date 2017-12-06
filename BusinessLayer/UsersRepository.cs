@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -20,7 +21,7 @@ namespace BusinessLayer
             return _databaseContext.Users.ToList();
         }
 
-        public User GetUserById(int id)
+        public User GetUserById(Guid id)
         {
             return _databaseContext.Users.FirstOrDefault(p => p.Id == id);
         }
@@ -37,7 +38,7 @@ namespace BusinessLayer
             _databaseContext.SaveChanges();
         }
 
-        public bool DeleteUser(int id)
+        public bool DeleteUser(Guid id)
         {
             var user = GetUserById(id);
             if (user == null)

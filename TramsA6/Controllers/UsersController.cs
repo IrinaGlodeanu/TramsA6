@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -32,11 +33,11 @@ namespace TramsA6.Controllers
 
             var entity = Domain.Entities.User.Create(createUserDto.Name);
             _repository.CreateUser(entity);
-            return StatusCode(201, entity);
+            return CreatedAtRoute("GetUserById", new {id = entity.Id}, entity);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetUserById(int id)
+        [HttpGet("{id}", Name = "GetUserById")]
+        public IActionResult GetUserById(Guid id)
         {
             var user = _repository.GetUserById(id);
             if (user == null)
@@ -47,7 +48,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             var status = _repository.DeleteUser(id);
             if (! status)
@@ -58,9 +59,9 @@ namespace TramsA6.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]UpdateUserDto updateUserDto)
+        public IActionResult Put(Guid id, [FromBody]UpdateUserDto updateUserDto)
         {
-            if (updateUserDto == null || updateUserDto.Id != id)
+            if (updateUserDto == null || ! id.Equals(updateUserDto.Id))
             {
                 return BadRequest();
             }

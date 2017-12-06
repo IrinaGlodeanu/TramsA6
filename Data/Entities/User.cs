@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
@@ -9,7 +10,7 @@ namespace Domain.Entities
             // EF Core
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required, MaxLength(20)]
         public string Name { get; private set; }
