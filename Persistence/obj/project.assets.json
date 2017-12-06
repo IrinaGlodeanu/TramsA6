@@ -3348,7 +3348,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pc\\.nuget\\packages\\": {},
+    "C:\\Users\\Silviu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -3357,17 +3357,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\Persistence.csproj",
+      "projectUniqueName": "D:\\fii res\\3\\dnet\\proiect\\Persistence\\Persistence.csproj",
       "projectName": "Persistence",
-      "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\Persistence.csproj",
-      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Persistence\\obj\\",
+      "projectPath": "D:\\fii res\\3\\dnet\\proiect\\Persistence\\Persistence.csproj",
+      "packagesPath": "C:\\Users\\Silviu\\.nuget\\packages\\",
+      "outputPath": "D:\\fii res\\3\\dnet\\proiect\\Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Silviu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3380,8 +3380,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj": {
-              "projectPath": "C:\\Users\\pc\\source\\repos\\TramsA6\\Data\\Domain.csproj"
+            "D:\\fii res\\3\\dnet\\proiect\\Data\\Domain.csproj": {
+              "projectPath": "D:\\fii res\\3\\dnet\\proiect\\Data\\Domain.csproj"
             }
           }
         }
@@ -3402,7 +3402,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "2.0",
             "autoReferenced": true
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {

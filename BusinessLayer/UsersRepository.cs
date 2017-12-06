@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -7,11 +6,11 @@ using Persistence.PersistenceFolder;
 
 namespace BusinessLayer
 {
-    public class UserRepository : IUserRepository
+    public class UsersRepository : IUsersRepository
     {
         private readonly IDatabaseContext _databaseContext;
 
-        public UserRepository(IDatabaseContext databaseContext)
+        public UsersRepository(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
@@ -21,7 +20,7 @@ namespace BusinessLayer
             return _databaseContext.Users.ToList();
         }
 
-        public User GetUserById(Guid id)
+        public User GetUserById(int id)
         {
             return _databaseContext.Users.FirstOrDefault(p => p.Id == id);
         }
@@ -38,16 +37,16 @@ namespace BusinessLayer
             _databaseContext.SaveChanges();
         }
 
-        public void DeleteUser(Guid id)
+        public bool DeleteUser(int id)
         {
-            var organisation = GetUserById(id);
-            if (organisation == null)
+            var user = GetUserById(id);
+            if (user == null)
             {
-                return;
+                return false;
             }
-
-            _databaseContext.Users.Remove(organisation);
+            _databaseContext.Users.Remove(user);
             _databaseContext.SaveChanges();
+            return true;
         }
     }
 }

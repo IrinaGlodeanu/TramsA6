@@ -11,3 +11,16 @@ C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Domain.dl
 C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Persistence.dll
 C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Persistence.pdb
 C:\Users\pc\source\repos\TramsA6\BusinessLayer\bin\Debug\netcoreapp2.0\Domain.pdb
+D:\fii res\3\dnet\proiect\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.deps.json
+D:\fii res\3\dnet\proiect\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.dll
+D:\fii res\3\dnet\proiect\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.pdb
+D:\fii res\3\dnet\proiect\BusinessLayer\bin\Debug\netcoreapp2.0\Domain.dll
+D:\fii res\3\dnet\proiect\BusinessLayer\bin\Debug\netcoreapp2.0\Persistence.dll
+D:\fii res\3\dnet\proiect\BusinessLayer\bin\Debug\netcoreapp2.0\Persistence.pdb
+D:\fii res\3\dnet\proiect\BusinessLayer\bin\Debug\netcoreapp2.0\Domain.pdb
+D:\fii res\3\dnet\proiect\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\fii res\3\dnet\proiect\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\fii res\3\dnet\proiect\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.AssemblyInfoInputs.cache
+D:\fii res\3\dnet\proiect\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.AssemblyInfo.cs
+D:\fii res\3\dnet\proiect\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.dll
+D:\fii res\3\dnet\proiect\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.pdb

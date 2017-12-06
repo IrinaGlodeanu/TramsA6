@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +9,9 @@ namespace TramsA6.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-        private readonly IUserRepository _repository;
+        private readonly IUsersRepository _repository;
 
-        public UsersController(IUserRepository repository)
+        public UsersController(IUsersRepository repository)
         {
             _repository = repository;
         }
@@ -24,20 +23,20 @@ namespace TramsA6.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser([FromBody]UserDto userDto)
+        public IActionResult AddUser([FromBody]CreateUserDto createUserDto)
         {
-            if (userDto == null)
+            if (createUserDto == null)
             {
                 return BadRequest();
             }
 
-            var entity = Domain.Entities.User.Create(userDto.Name);
+            var entity = Domain.Entities.User.Create(createUserDto.Name);
             _repository.CreateUser(entity);
-            return Ok(entity);
+            return StatusCode(201, entity);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetByUserId(Guid id)
+        public IActionResult GetUserById(int id)
         {
             var user = _repository.GetUserById(id);
             if (user == null)
@@ -48,26 +47,31 @@ namespace TramsA6.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
-            _repository.DeleteUser(id);
+            var status = _repository.DeleteUser(id);
+            if (! status)
+            {
+                return NotFound();
+            }
             return NoContent();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody]UserDto userDto)
+        public IActionResult Put(int id, [FromBody]UpdateUserDto updateUserDto)
         {
+            if (updateUserDto == null || updateUserDto.Id != id)
+            {
+                return BadRequest();
+            }
             var user = _repository.GetUserById(id);
             if (user == null)
             {
                 return NotFound();
             }
-            user.Update(userDto.Name);
+            user.Update(updateUserDto.Name);
             _repository.EditUser(user);
-            return Ok(user);
+            return NoContent();
         }
-
-
-
     }
 }

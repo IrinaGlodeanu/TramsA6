@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Domain.Entities;
 
 namespace Domain.Interfaces
 {
-    public interface IUserRepository
+    public interface IUsersRepository
     {
         IReadOnlyList<User> GetAllUsers();
-        User GetUserById(Guid id);
+        User GetUserById(int id);
         void CreateUser(User user);
         void EditUser(User user);
-        void DeleteUser(Guid id);
+        bool DeleteUser(int id);
     }
 }
