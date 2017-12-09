@@ -5,21 +5,20 @@ namespace Domain.Entities
 {
     public class User
     {
-        public User()
+        private User()
         {
+            // EF Core
         }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
 
         [Required, MaxLength(20)]
         public string Name { get; private set; }
-
 
         public static User Create(string name)
         {
             var userToCreate = new User
             {
-                Id = Guid.NewGuid(),
                 Name = name,
             };
 

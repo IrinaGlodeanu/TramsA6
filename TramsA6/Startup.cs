@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BusinessLayer;
+﻿using BusinessLayer;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +24,7 @@ namespace TramsA6
             var connection = @"Server = .\SQLEXPRESS; Database = User.Development; Trusted_Connection = true;";
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
-            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUsersRepository, UsersRepository>();
             services.AddTransient<IDatabaseContext, DatabaseContext>();
 
 

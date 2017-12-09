@@ -1,3 +1,13 @@
+# description
+desc.txt
+
+#obj
+BusinessLayer/obj/*
+Data/obj/*
+Persistence/obj/*
+TramsA6/obj/*
+
+
 #project.json files
 project.json.old
 

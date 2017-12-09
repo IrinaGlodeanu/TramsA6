@@ -4,12 +4,12 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 {
-    public interface IUserRepository
+    public interface IUsersRepository
     {
         IReadOnlyList<User> GetAllUsers();
         User GetUserById(Guid id);
         void CreateUser(User user);
         void EditUser(User user);
-        void DeleteUser(Guid id);
+        bool DeleteUser(Guid id);
     }
 }
