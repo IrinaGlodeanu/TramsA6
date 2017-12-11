@@ -7,11 +7,11 @@ using Persistence.PersistenceFolder;
 
 namespace BusinessLayer
 {
-    public class UsersRepository : IUsersRepository
+    public class UserRepository : IUserRepository
     {
         private readonly IDatabaseContext _databaseContext;
 
-        public UsersRepository(IDatabaseContext databaseContext)
+        public UserRepository(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }

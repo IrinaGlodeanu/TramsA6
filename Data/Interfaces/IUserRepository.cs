@@ -4,7 +4,7 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 {
-    public interface IUsersRepository
+    public interface IUserRepository
     {
         IReadOnlyList<User> GetAllUsers();
         User GetUserById(Guid id);
