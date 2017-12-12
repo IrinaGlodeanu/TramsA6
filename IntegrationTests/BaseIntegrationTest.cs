@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Persistence.PersistenceFolder;
 
 namespace IntegrationTests
@@ -9,16 +10,23 @@ namespace IntegrationTests
     {
         private IConfiguration _configuration;
 
-        protected virtual bool UseSqlServer => bool.Parse(_configuration["UseSqlServer"]);
+        protected virtual bool UseSqlServer => false;// bool.Parse(_configuration["UseSqlServer"]);
 
-
-        public BaseIntegrationTest()
+        [TestInitialize]
+        public virtual void TestInitialize()
         {
-            InitializeConfiguration();
+
+          //  InitializeConfiguration();
             DestroyDatabase();
             CreateDatabase();
         }
 
+        [TestCleanup]
+        public virtual void TestCleanup()
+        {
+            DestroyDatabase();
+        }
+   
         public void RunOnDatabase(Action<DatabaseContext> databaseAction)
         {
             if (UseSqlServer)
@@ -34,7 +42,7 @@ namespace IntegrationTests
         private void RunOnSqlServer(Action<DatabaseContext> databaseAction)
         {
             var options = new DbContextOptionsBuilder<DatabaseContext>()
-                .UseSqlServer(_configuration.GetConnectionString("UsersConnectionString"))
+                .UseSqlServer("Data Source=users.db")
                 .Options;
 
             using (var context = new DatabaseContext(options))
@@ -46,7 +54,7 @@ namespace IntegrationTests
         private void RunOnMemory(Action<DatabaseContext> databaseAction)
         {
             var options = new DbContextOptionsBuilder<DatabaseContext>()
-                .UseInMemoryDatabase("UsersConnectionString")
+                .UseInMemoryDatabase("Users")
                 .Options;
 
             using (var context = new DatabaseContext(options))
