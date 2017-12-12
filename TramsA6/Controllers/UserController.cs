@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using Domain.Entities;
 using Domain.Interfaces;
+using EnsureThat;
 using Microsoft.AspNetCore.Mvc;
 using TramsA6.DTOS;
 
 namespace TramsA6.Controllers
 {
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class UserController : Controller
     {
-        private readonly IUsersRepository _repository;
+        private readonly IUserRepository _repository;
 
-        public UsersController(IUsersRepository repository)
+        public UserController(IUserRepository repository)
         {
+            Ensure.That(repository).IsNotNull();
             _repository = repository;
         }
 
@@ -24,7 +26,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser([FromBody]CreateUserDto createUserDto)
+        public IActionResult AddUser([FromBody] CreateUserDto createUserDto)
         {
             if (createUserDto == null)
             {
@@ -51,7 +53,7 @@ namespace TramsA6.Controllers
         public IActionResult Delete(Guid id)
         {
             var status = _repository.DeleteUser(id);
-            if (! status)
+            if (!status)
             {
                 return NotFound();
             }
@@ -59,9 +61,9 @@ namespace TramsA6.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody]UpdateUserDto updateUserDto)
+        public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
         {
-            if (updateUserDto == null || ! id.Equals(updateUserDto.Id))
+            if (updateUserDto == null || !id.Equals(updateUserDto.Id))
             {
                 return BadRequest();
             }

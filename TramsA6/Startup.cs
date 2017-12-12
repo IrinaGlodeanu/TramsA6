@@ -21,10 +21,10 @@ namespace TramsA6
         
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = @"Server = .\SQLEXPRESS; Database = User.Development; Trusted_Connection = true;";
+            var connection = Configuration.GetConnectionString("UsersConnectionString");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
-            services.AddTransient<IUsersRepository, UsersRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IDatabaseContext, DatabaseContext>();
 
 
