@@ -2,6 +2,12 @@
 {
     public class Coordinates
     {
+        public Coordinates()
+        {
+            
+        }
+
+
         public Coordinates(double latitude, double longitude)
         {
             Latitude = latitude;

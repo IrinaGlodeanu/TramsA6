@@ -25,16 +25,16 @@ namespace TramsA6.Controllers
             return _repository.GetAll();
         }
 
-        //[HttpPost]
-        //public IActionResult AddUser([FromBody] CreateUserDto createUserDto)
-        //{
-        //    if (createUserDto == null)
-        //        return BadRequest();
+        [HttpPost]
+        public IActionResult AddUser([FromBody] CreateUserDto createUserDto)
+        {
+            if (createUserDto == null)
+                return BadRequest();
 
-        //    var entity = Domain.Entities.User.Create(createUserDto.Name);
-        //    _repository.Add(entity);
-        //    return CreatedAtRoute("GetUserById", new {id = entity.Id}, entity);
-        //}
+            var entity = Domain.Entities.User.Create(createUserDto.Name, createUserDto.Password, createUserDto.Username, createUserDto.Email,0, new List<Comment>());
+            _repository.Add(entity);
+            return CreatedAtRoute("GetUserById", new {id = entity.Id}, entity);
+        }
 
         [HttpGet("{id}", Name = "GetUserById")]
         public IActionResult GetUserById(Guid id)
@@ -54,17 +54,19 @@ namespace TramsA6.Controllers
             return NoContent();
         }
 
-        //[HttpPut("{id}")]
-        //public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
-        //{
-        //    if (updateUserDto == null || !id.Equals(updateUserDto.Id))
-        //        return BadRequest();
-        //    var user = _repository.GetById(id);
-        //    if (user == null)
-        //        return NotFound();
-        //    user.Update(updateUserDto.Name);
-        //    _repository.Update(user);
-        //    return NoContent();
-        //}
+        [HttpPut("{id}")]
+        public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
+        {
+            if (updateUserDto == null)
+                return BadRequest();
+            var user = _repository.GetById(id);
+            if (user == null)
+                return NotFound();
+            user.Update(updateUserDto.Name, updateUserDto.Password, updateUserDto.Username, updateUserDto.Email, 0, new List<Comment>());
+            _repository.Update(user);
+            return NoContent();
+        }
+
+        //todo: addComment to user functionality
     }
 }
