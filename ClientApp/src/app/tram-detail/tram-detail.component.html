@@ -1,0 +1,12 @@
+<div *ngIf="tram">
+    <h2>Tram {{ tram.no }} Details</h2>
+    <div class="info">
+        <div><span>id: </span>{{tram.id}}</div>
+        <div>
+          <label>No:
+            <input [(ngModel)]="tram.no" placeholder="number">
+          </label>
+        </div>
+    </div>
+    <button (click)="goBack()">go back</button>
+  </div>
