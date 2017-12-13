@@ -9,8 +9,6 @@ namespace IntegrationTests
     {
         private IConfiguration _configuration;
 
-        protected virtual bool UseSqlServer => bool.Parse(_configuration["UseSqlServer"]);
-
 
         public BaseIntegrationTest()
         {
@@ -19,16 +17,19 @@ namespace IntegrationTests
             CreateDatabase();
         }
 
+        protected virtual bool UseSqlServer => bool.Parse(_configuration["UseSqlServer"]);
+
+        public void Dispose()
+        {
+            DestroyDatabase();
+        }
+
         public void RunOnDatabase(Action<DatabaseContext> databaseAction)
         {
             if (UseSqlServer)
-            {
                 RunOnSqlServer(databaseAction);
-            }
             else
-            {
                 RunOnMemory(databaseAction);
-            }
         }
 
         private void RunOnSqlServer(Action<DatabaseContext> databaseAction)
@@ -70,11 +71,5 @@ namespace IntegrationTests
         {
             RunOnDatabase(context => context.Database.EnsureDeleted());
         }
-
-        public void Dispose()
-        {
-            DestroyDatabase();
-        }
     }
-
 }

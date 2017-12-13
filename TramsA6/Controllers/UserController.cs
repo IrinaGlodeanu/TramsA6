@@ -22,59 +22,49 @@ namespace TramsA6.Controllers
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
-            return _repository.GetAllUsers();
+            return _repository.GetAll();
         }
 
-        [HttpPost]
-        public IActionResult AddUser([FromBody] CreateUserDto createUserDto)
-        {
-            if (createUserDto == null)
-            {
-                return BadRequest();
-            }
+        //[HttpPost]
+        //public IActionResult AddUser([FromBody] CreateUserDto createUserDto)
+        //{
+        //    if (createUserDto == null)
+        //        return BadRequest();
 
-            var entity = Domain.Entities.User.Create(createUserDto.Name);
-            _repository.CreateUser(entity);
-            return CreatedAtRoute("GetUserById", new {id = entity.Id}, entity);
-        }
+        //    var entity = Domain.Entities.User.Create(createUserDto.Name);
+        //    _repository.Add(entity);
+        //    return CreatedAtRoute("GetUserById", new {id = entity.Id}, entity);
+        //}
 
         [HttpGet("{id}", Name = "GetUserById")]
         public IActionResult GetUserById(Guid id)
         {
-            var user = _repository.GetUserById(id);
+            var user = _repository.GetById(id);
             if (user == null)
-            {
                 return NotFound();
-            }
             return Ok(user);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
-            var status = _repository.DeleteUser(id);
+            var status = _repository.Delete(id);
             if (!status)
-            {
                 return NotFound();
-            }
             return NoContent();
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
-        {
-            if (updateUserDto == null || !id.Equals(updateUserDto.Id))
-            {
-                return BadRequest();
-            }
-            var user = _repository.GetUserById(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            user.Update(updateUserDto.Name);
-            _repository.EditUser(user);
-            return NoContent();
-        }
+        //[HttpPut("{id}")]
+        //public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
+        //{
+        //    if (updateUserDto == null || !id.Equals(updateUserDto.Id))
+        //        return BadRequest();
+        //    var user = _repository.GetById(id);
+        //    if (user == null)
+        //        return NotFound();
+        //    user.Update(updateUserDto.Name);
+        //    _repository.Update(user);
+        //    return NoContent();
+        //}
     }
 }
