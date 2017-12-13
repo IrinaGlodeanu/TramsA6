@@ -8,7 +8,7 @@ using TramsA6.DTOS.TransportMeanModels;
 
 namespace TramsA6.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/TransportMeans")]
     public class TransportMeanController : Controller
     {
         private readonly ITransportMeanRepository _repository;

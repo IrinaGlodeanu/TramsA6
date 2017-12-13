@@ -8,7 +8,7 @@ using TramsA6.DTOS;
 
 namespace TramsA6.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Users")]
     public class UserController : Controller
     {
         private readonly IUserRepository _repository;

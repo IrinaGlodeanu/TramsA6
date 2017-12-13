@@ -10,7 +10,7 @@ using TramsA6.DTOS.TransportMeanModels;
 namespace TramsA6.Controllers
 {
 
-    [Route("api/[controller]")]
+    [Route("api/Comments")]
     public class CommentController : Controller
     {
         private readonly ICommentRepository _repository;
