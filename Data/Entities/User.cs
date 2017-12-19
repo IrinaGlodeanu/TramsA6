@@ -48,5 +48,17 @@ namespace Domain.Entities
             Trust = trust;
             Comments = comments;
         }
+
+        public override String ToString()
+        {
+            var text = "Name:" + Name + "\nPassword:" + Password + "\nUsername:" + Username + "\nEmail:" + Email + "\nTrust:" + Trust.ToString()+ "\nComment:";
+            if (Comments != null)
+            foreach (Comment comment in Comments)
+                text += comment.Text + "\n";
+
+            return text;
+
+        }
+
     }
 }
