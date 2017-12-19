@@ -1,12 +1,36 @@
 <div *ngIf="tram">
-    <h2>Tram {{ tram.no }} Details</h2>
-    <div class="info">
-        <div><span>id: </span>{{tram.id}}</div>
-        <div>
-          <label>No:
-            <input [(ngModel)]="tram.no" placeholder="number">
-          </label>
-        </div>
-    </div>
-    <button (click)="goBack()">go back</button>
+    <div class="container-fluid">
+        <h2>Tram {{ tram.no }}</h2>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title text-center">intarziere</h3>
+                    </div>
+                    <div class="panel-body bg-danger">
+                        20 min
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title text-center">grad ocupare</h3>
+                  </div>
+                  <div class="panel-body">
+                      <div class="progress center-block">
+                          <div class="progress-bar progress-bar-success center-block" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                            <span class="sr-only">40% Complete (success)</span>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+          </div>
+
   </div>
+  <button (click)="goBack()">go back</button>
+  </div>
+  </div>  
+
+
+  
