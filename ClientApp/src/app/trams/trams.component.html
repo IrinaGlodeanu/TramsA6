@@ -1,0 +1,8 @@
+    <h2>Trams</h2>
+    <ul class="trams">
+      <li *ngFor="let tram of trams">
+        <a routerLink="/detail/{{tram.id}}">
+          <span class="badge">{{tram.id}}</span>{{tram.no}}
+        </a>
+      </li>
+    </ul>
