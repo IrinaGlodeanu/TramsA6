@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
 using Microsoft.AspNetCore.Mvc;
-using TramsA6.DTOS;
+using TramsA6.DTOS.CommentModels;
+using TramsA6.DTOS.UserModels;
 
 namespace TramsA6.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Users")]
     public class UserController : Controller
     {
         private readonly IUserRepository _repository;
+        private readonly ITransportMeanRepository _transportMean;
 
-        public UserController(IUserRepository repository)
+        public UserController(IUserRepository repository, ITransportMeanRepository transportMean)
         {
             Ensure.That(repository).IsNotNull();
             _repository = repository;
+            _transportMean = transportMean;
         }
 
         [HttpGet]
@@ -25,20 +29,10 @@ namespace TramsA6.Controllers
             return _repository.GetAll();
         }
 
-        [HttpPost]
-        public IActionResult AddUser([FromBody] CreateUserDto createUserDto)
-        {
-            if (createUserDto == null)
-                return BadRequest();
-
-            var entity = Domain.Entities.User.Create(createUserDto.Name, createUserDto.Password, createUserDto.Username, createUserDto.Email,0, new List<Comment>());
-            _repository.Add(entity);
-            return CreatedAtRoute("GetUserById", new {id = entity.Id}, entity);
-        }
-
         [HttpGet("{id}", Name = "GetUserById")]
         public IActionResult GetUserById(Guid id)
         {
+            Ensure.That(id).IsNotEmpty();
             var user = _repository.GetById(id);
             if (user == null)
                 return NotFound();
@@ -48,6 +42,7 @@ namespace TramsA6.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
+            Ensure.That(id).IsNotEmpty();
             var status = _repository.Delete(id);
             if (!status)
                 return NotFound();
@@ -57,16 +52,38 @@ namespace TramsA6.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
         {
+            Ensure.That(id).IsNotEmpty();
             if (updateUserDto == null)
                 return BadRequest();
             var user = _repository.GetById(id);
             if (user == null)
                 return NotFound();
-            user.Update(updateUserDto.Name, updateUserDto.Password, updateUserDto.Username, updateUserDto.Email, 0, new List<Comment>());
+            user.Update(updateUserDto.Name, updateUserDto.Password, updateUserDto.Username, updateUserDto.Email, 0,
+                new List<Comment>());
             _repository.Update(user);
             return NoContent();
         }
 
-        //todo: addComment to user functionality
+        [HttpPut("{idUser}/comment")]
+        public IActionResult AddCommentToUser(Guid idUser, [FromBody] CreateCommentDTO comment)
+        {
+            if (idUser.Equals(Guid.Empty))
+                return BadRequest();
+
+            if (comment == null)
+                return BadRequest();
+
+            var user = _repository.GetById(idUser);
+
+            if (user == null)
+                return NotFound();
+
+            //todo: automapper
+            Comment com = Comment.Create(_transportMean.GetById(comment.TransportationMean), user, DateTime.Now,
+                comment.Text, 0, 0);
+            user.Comments.Append(com);
+
+            return NoContent();
+        }
     }
 }

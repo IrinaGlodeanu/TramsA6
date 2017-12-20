@@ -1,4 +1,6 @@
 ﻿using BusinessLayer;
+using BusinessLayer.Repositories;
+using BusinessLayer.Services;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.PersistenceFolder;
 using Swashbuckle.AspNetCore.Swagger;
+using TramsA6.Filters;
 
 namespace TramsA6
 {
@@ -28,9 +31,10 @@ namespace TramsA6
             services.AddTransient<IDatabaseContext, DatabaseContext>();
             services.AddTransient<ITransportMeanRepository, TransportMeanRepository>();
             services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
 
 
-            services.AddMvc();
+            services.AddMvc(options => options.Filters.Add(new ValidateModelStateFilter()));
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "My User API", Version = "v1"}); });
         }

@@ -5,7 +5,7 @@ using Domain.Entities;
 using Domain.Interfaces;
 using Persistence.PersistenceFolder;
 
-namespace BusinessLayer
+namespace BusinessLayer.Repositories
 {
     public class CommentRepository : CrudRepository<Comment>, ICommentRepository
     {

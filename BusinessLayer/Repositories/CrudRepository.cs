@@ -6,7 +6,7 @@ using Domain.Interfaces;
 using EnsureThat;
 using Persistence.PersistenceFolder;
 
-namespace BusinessLayer
+namespace BusinessLayer.Repositories
 {
     public abstract class CrudRepository<TEntity> : ICrudRepository<TEntity> where TEntity : BaseEntity
     {

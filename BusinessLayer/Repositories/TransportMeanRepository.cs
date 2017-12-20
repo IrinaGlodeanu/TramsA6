@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Domain.Entities;
 using Domain.Interfaces;
 using Persistence.PersistenceFolder;
 
-namespace BusinessLayer
+namespace BusinessLayer.Repositories
 {
     public class TransportMeanRepository: CrudRepository<TransportMean>, ITransportMeanRepository
     {
