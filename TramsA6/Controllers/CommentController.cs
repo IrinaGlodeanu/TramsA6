@@ -5,12 +5,10 @@ using Domain.Interfaces;
 using EnsureThat;
 using Microsoft.AspNetCore.Mvc;
 using TramsA6.DTOS.CommentModels;
-using TramsA6.DTOS.TransportMeanModels;
 
 namespace TramsA6.Controllers
 {
-
-    [Route("api/[controller]")]
+    [Route("api/Comments")]
     public class CommentController : Controller
     {
         private readonly ICommentRepository _repository;
@@ -54,7 +52,8 @@ namespace TramsA6.Controllers
             var comment = _repository.GetById(id);
             if (comment == null)
                 return NotFound();
-            comment.Update(comment.TransportationMean,comment.User, DateTime.Now, updateCommentDto.Text, 0,updateCommentDto.Rating);
+            comment.Update(comment.TransportationMean, comment.User, DateTime.Now, updateCommentDto.Text, 0,
+                updateCommentDto.Rating);
             _repository.Update(comment);
             return NoContent();
         }

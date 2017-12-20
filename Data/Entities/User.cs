@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
@@ -11,14 +10,19 @@ namespace Domain.Entities
         }
 
         [Required]
-        [MaxLength(20)]
+        [MaxLength(25)]
         public string Name { get; private set; }
 
-        public string Password { get; private set; }
+        public string Password { get; private set; } //parola hashuita
+
+        public byte[] Salt { get; private set; }
 
         public string Username { get; private set; }
+
         public string Email { get; private set; }
+
         public double Trust { get; private set; }
+
         public List<Comment> Comments { get; private set; }
 
 
@@ -47,6 +51,12 @@ namespace Domain.Entities
             Email = email;
             Trust = trust;
             Comments = comments;
+        }
+
+        public void SetAuthenticationData(string password, byte[]salt)
+        {
+            Password = password;
+            Salt = salt;
         }
     }
 }

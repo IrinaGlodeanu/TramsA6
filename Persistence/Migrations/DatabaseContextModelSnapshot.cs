@@ -73,6 +73,8 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Password");
 
+                    b.Property<byte[]>("Salt");
+
                     b.Property<double>("Trust");
 
                     b.Property<string>("Username");
