@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Tram } from '../tram';
-import { TramService } from "../tram.service";
+import { Tram } from '../../_services/tram/tram';
+import { TramService } from "../../_services/tram/tram.service";
 
 @Component({
   selector: 'app-trams',
@@ -11,7 +11,7 @@ import { TramService } from "../tram.service";
 export class TramsComponent implements OnInit {
 
   trams: Tram[];
-  
+
   constructor(private tramService: TramService) { }
 
   ngOnInit() {

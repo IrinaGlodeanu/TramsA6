@@ -6,7 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { Tram } from './tram';
 import { TRAMS } from './mock-trams';
 
-import { MessageService } from './message.service';
+import { MessageService } from '../message/message.service';
 
 @Injectable()
 export class TramService {
