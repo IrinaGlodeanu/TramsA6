@@ -39,7 +39,9 @@ namespace BusinessLayer.Services
             var user = _userRepository.GetUserByEmail(email);
 
             if (user == null)
+            {
                 return false;
+            }
 
             var hashedPassword =
                 Convert.ToBase64String(KeyDerivation.Pbkdf2(password, user.Salt, KeyDerivationPrf.HMACSHA1, 10000,

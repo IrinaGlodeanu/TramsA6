@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TramsA6.DTOS.CommentModels;
 using TramsA6.DTOS.UserModels;
@@ -18,7 +20,7 @@ namespace TramsA6.Controllers
 
         public UserController(IUserRepository repository, ITransportMeanRepository transportMean)
         {
-            Ensure.That(repository).IsNotNull();
+            EnsureArg.IsNotNull(repository);
             _repository = repository;
             _transportMean = transportMean;
         }
@@ -32,13 +34,15 @@ namespace TramsA6.Controllers
         [HttpGet("{id}", Name = "GetUserById")]
         public IActionResult GetUserById(Guid id)
         {
-            Ensure.That(id).IsNotEmpty();
+            EnsureArg.IsNotEmpty(id);
             var user = _repository.GetById(id);
             if (user == null)
                 return NotFound();
             return Ok(user);
         }
 
+
+        //only to admin or smthn
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -50,6 +54,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
         {
             Ensure.That(id).IsNotEmpty();
@@ -58,13 +63,21 @@ namespace TramsA6.Controllers
             var user = _repository.GetById(id);
             if (user == null)
                 return NotFound();
-            user.Update(updateUserDto.Name, updateUserDto.Password, updateUserDto.Username, updateUserDto.Email, 0,
-                new List<Comment>());
+
+            user = Mapper.Map(updateUserDto, user);
+
+            //user.Update(updateUserDto.Name, updateUserDto.Password, updateUserDto.Username, updateUserDto.Email, 0,
+            //   new List<Comment>());
+
+
             _repository.Update(user);
             return NoContent();
         }
 
+
+        //id-ul trebuie sa fie al userului urent pt a adauga un comment
         [HttpPut("{idUser}/comment")]
+        [Authorize]
         public IActionResult AddCommentToUser(Guid idUser, [FromBody] CreateCommentDTO comment)
         {
             if (idUser.Equals(Guid.Empty))
