@@ -10,6 +10,7 @@ namespace TramsA6.DTOS.AuthModels
         }
 
         public string Token { get; set; }
+
         public int Expiration { get; set; }
     }
 }

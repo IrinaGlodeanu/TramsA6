@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
@@ -23,7 +24,7 @@ namespace TramsA6.Controllers
 
 
         public LoginController(IUserRepository userRepository, IAuthenticationService authenticationService,
-            IConfiguration configuration) //stie sa ia din fisiere de configurare proprietati appsettings
+            IConfiguration configuration)
         {
             Ensure.That(userRepository).IsNotNull();
             Ensure.That(authenticationService).IsNotNull();
@@ -72,11 +73,15 @@ namespace TramsA6.Controllers
                 return BadRequest("The user with this email already exists");
 
 
-            var userToSave = Domain.Entities.User.Create(model.Name, model.Password, model.Username, model.Email, 0,
-                new List<Comment>());
+            //            var userToSave = Domain.Entities.User.Create(model.Name, model.Password, model.Username, model.Email, 0,
+            //                new List<Comment>());
 
-            _authenticationService.Register(userToSave, model.Password);
-            return Ok(userToSave);
+
+
+            user = Mapper.Map(model, user);
+
+            _authenticationService.Register(user, model.Password);
+            return Ok(user);
         }
 
 
