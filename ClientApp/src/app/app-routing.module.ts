@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'detail/:id', component: TramDetailComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '/dashboard' },
 ];
 
 @NgModule({

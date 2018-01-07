@@ -20,8 +20,8 @@ import { AuthenticationService } from './_services/authentication/authentication
 import { UserService } from './_services/user/user.service';
 
 import { AuthGuard } from './_guards/auth.guard';
-import {fakeBackendProvider} from "./_helpers/fake-backend";
-import {JwtInterceptor} from "./_helpers/jwt.interceptor";
+import { fakeBackendProvider } from './_helpers/fake-backend';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
 
 
 @NgModule({
@@ -54,7 +54,7 @@ import {JwtInterceptor} from "./_helpers/jwt.interceptor";
       multi: true
     },
 
-    // provider used to create fake backend
+    // pentru a verifica daca merge autentificare corect
     fakeBackendProvider
   ],
   bootstrap: [AppComponent]
