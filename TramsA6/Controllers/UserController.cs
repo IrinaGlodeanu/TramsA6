@@ -46,6 +46,7 @@ namespace TramsA6.Controllers
 
         //only to admin or smthn
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(Guid id)
         {
             EnsureArg.IsNotNull(id);

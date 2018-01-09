@@ -84,7 +84,10 @@ namespace TramsA6.Controllers
             user = Mapper.Map(model, user);
 
             _authenticationService.Register(user, model.Password);
-            return Ok(user);
+
+            var userCreationResponseDto =new UserCreationResponseDTO();
+            userCreationResponseDto = Mapper.Map(user, userCreationResponseDto);
+            return Ok(userCreationResponseDto);
         }
 
 

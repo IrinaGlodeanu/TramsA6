@@ -9,6 +9,7 @@ namespace TramsA6.DTOS.UserModels.Mappings
         {
             CreateMap<CreateUserDto, User>().ReverseMap();
             CreateMap<UpdateUserDto, User>().ReverseMap();
+            CreateMap<UserCreationResponseDTO, User>().ReverseMap();
         }
     }
 }
