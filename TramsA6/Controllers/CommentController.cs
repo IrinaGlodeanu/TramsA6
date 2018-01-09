@@ -4,6 +4,7 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TramsA6.DTOS.CommentModels;
 
@@ -40,6 +41,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(Guid id)
         {
             var status = _repository.Delete(id);
@@ -51,6 +53,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(Guid id, [FromBody] UpdateCommentDTO updateCommentDto)
         {
             if (updateCommentDto == null)

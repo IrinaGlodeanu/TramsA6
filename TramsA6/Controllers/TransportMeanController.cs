@@ -5,6 +5,7 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TramsA6.DTOS.CommentModels;
 using TramsA6.DTOS.TransportMeanModels;
@@ -32,6 +33,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult AddMeanOfTransport([FromBody] CreateTransportMeanDTO createTransportMeanDTO)
         {
             if (createTransportMeanDTO == null)
@@ -64,6 +66,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(Guid id)
         {
             if (id.Equals(Guid.Empty))
@@ -80,6 +83,7 @@ namespace TramsA6.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(Guid id, [FromBody] UpdateTransportMeanDTO updateTransportMeanDto)
         {
             if (id.Equals(Guid.Empty))
@@ -107,6 +111,7 @@ namespace TramsA6.Controllers
 
 
         [HttpPut("{idMeanOfTransport}/comment")]
+        [Authorize]
         public IActionResult AddCommentToMeanOfTransport(Guid idMeanOfTransport, [FromBody] CreateCommentDTO comment)
         {
             if (idMeanOfTransport.Equals(Guid.Empty))
