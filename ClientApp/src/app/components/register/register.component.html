@@ -4,8 +4,14 @@
 
       <div class="app-title">
         <h2>Register</h2>
+        <div class="logo">
+              <div class = "logo-hide-text">
+                  <div class ="text">A6 - Trams</div>
+              </div>
+       </div>   
+        <hr>
       </div>
-
+      
       <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fullName.valid }">
           <label for="fullName">Name</label>

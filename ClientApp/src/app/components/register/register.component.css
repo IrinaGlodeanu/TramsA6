@@ -1,6 +1,6 @@
 .login {
   margin: 20px auto;
-  width: 300px;
+  width: 400px;
 }
 .login-screen {
   background-color: #FFF;
@@ -13,6 +13,46 @@
   color: #777;
 }
 
+.logo{
+  opacity: 1;
+  transition:  .5s ease;
+  backface-visibility: hidden;
+  padding: 75px;
+  max-height: 100px;
+  max-width: 100px;
+  margin:auto;
+  align-self: center;
+  background-image: url("logo1.jpg");
+  background-size:cover;
+  border-radius:100px 100px 100px 100px;
+}
+
+.logo-hide-text{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  left:50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  
+}
+
+.app-title:hover .logo-hide-text{
+  opacity: 1;
+  
+}
+
+.app-title:hover .logo{
+opacity: 0.8;
+}
+
+.text{
+  background-color: #2B000E;
+  color: white;
+  font-size: 18px;
+  padding: 16px 32px;
+  border-radius:20px 20px 20px 20px;
+}
 .login-form {
   text-align: center;
 }
