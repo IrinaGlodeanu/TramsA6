@@ -1,11 +1,11 @@
-<h3>Trending Trams</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let tram of trams" class="col-1-4"
-      routerLink="/detail/{{tram.id}}">
-    <div class="module tram">
-      <h4>{{tram.no}}</h4>
-    </div>
-  </a>
+<div class="back">
+  <h3>Trending Trams</h3>
+  <div class="grid grid-pad">
+    <a *ngFor="let tram of trams" class="col-1-4"
+       routerLink="/detail/{{tram.id}}">
+      <div class="module tram">
+        <h4>{{tram.no}}</h4>
+      </div>
+    </a>
+  </div>
 </div>
-
-<p><a [routerLink]="['/login']">Logout</a></p>

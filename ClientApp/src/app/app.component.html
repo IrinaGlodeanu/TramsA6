@@ -1,14 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container-fluid">
   <div style="text-align:center">
-    <div class="page-header">
-      <h1 class="text-center">{{ title }}</h1>
+    <div class="back" *ngIf="IsLoggedIn()">
+      <div class="page-header">
+        <h1 class="text-center">{{ title }}</h1>
+      </div>
+      <img width="300" height="200" alt="TramsA6Logo" src="..\assets\tram-joy.jpg">
+      <nav>
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/trams">Trams</a>
+        <p><a [routerLink]="['/login']">Logout</a></p>
+      </nav>
     </div>
-    <img width="300" height="200" alt="TramsA6Logo" src="..\assets\tram-joy.jpg">
-    <nav>
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/trams">Trams</a>
-    </nav>
     <router-outlet></router-outlet>
     <!-- <app-messages></app-messages> -->
   </div>

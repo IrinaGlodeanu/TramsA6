@@ -1,16 +1,16 @@
 <div class="container-fluid">
   <h2>Trams</h2>
   <div class="row" *ngFor="let tram of trams">
-        <a routerLink="/detail/{{tram.id}}">
-            <div class="col-xs-4 col-xs-offset-4">
-              <div class="thumbnail">
-                <img width="242" height="200" src="../assets/tram{{tram.no}}.jpg" alt="tram {{tram.no}}">
-                <div class="caption">
-                  <h3>{{tram.no}}</h3>
-                  <p><span class="glyphicon glyphicon-road"></span>{{tram.route}}</p>
-                </div>
-              </div>
-            </div>
-          </a>
-    </div>
+    <a routerLink="/detail/{{tram.id}}">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="thumbnail">
+          <img width="242" height="200" src="../assets/tram{{tram.no}}.jpg" alt="tram {{tram.no}}">
+          <div class="caption">
+            <h3>{{tram.no}}</h3>
+            <p><span class="glyphicon glyphicon-road"></span>{{tram.route}}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
 </div>
