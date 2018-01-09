@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AutoMapper;
-using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
 using Microsoft.AspNetCore.Mvc;
