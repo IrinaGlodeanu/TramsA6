@@ -13,7 +13,7 @@ namespace Domain.Entities
         [MaxLength(25)]
         public string Name { get; private set; }
 
-        public string Password { get; private set; } //parola hashuita
+        public string Password { get; private set; } 
 
         public byte[] Salt { get; private set; }
 
