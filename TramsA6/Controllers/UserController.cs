@@ -37,7 +37,9 @@ namespace TramsA6.Controllers
             EnsureArg.IsNotEmpty(id);
             var user = _repository.GetById(id);
             if (user == null)
+            {
                 return NotFound();
+            }
             return Ok(user);
         }
 
@@ -46,10 +48,12 @@ namespace TramsA6.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
-            Ensure.That(id).IsNotEmpty();
+            EnsureArg.IsNotNull(id);
             var status = _repository.Delete(id);
             if (!status)
+            {
                 return NotFound();
+            }
             return NoContent();
         }
 
@@ -57,18 +61,22 @@ namespace TramsA6.Controllers
         [Authorize]
         public IActionResult Put(Guid id, [FromBody] UpdateUserDto updateUserDto)
         {
-            Ensure.That(id).IsNotEmpty();
+            EnsureArg.IsNotNull(id);
             if (updateUserDto == null)
+            {
                 return BadRequest();
+            }
+
             var user = _repository.GetById(id);
             if (user == null)
+            {
                 return NotFound();
+            }
 
             user = Mapper.Map(updateUserDto, user);
 
             //user.Update(updateUserDto.Name, updateUserDto.Password, updateUserDto.Username, updateUserDto.Email, 0,
-            //   new List<Comment>());
-
+            //  new List<Comment>());
 
             _repository.Update(user);
             return NoContent();
@@ -81,19 +89,26 @@ namespace TramsA6.Controllers
         public IActionResult AddCommentToUser(Guid idUser, [FromBody] CreateCommentDTO comment)
         {
             if (idUser.Equals(Guid.Empty))
+            {
                 return BadRequest();
+            }
 
             if (comment == null)
+            {
                 return BadRequest();
+            }
 
             var user = _repository.GetById(idUser);
 
             if (user == null)
+            {
                 return NotFound();
+            }
 
             //todo: automapper
             Comment com = Comment.Create(_transportMean.GetById(comment.TransportationMean), user, DateTime.Now,
-                comment.Text, 0, 0);
+               comment.Text, 0, 0);
+
             user.Comments.Append(com);
 
             return NoContent();

@@ -14,7 +14,7 @@ namespace BusinessLayer.Repositories
 
         protected CrudRepository(IDatabaseContext context)
         {
-            Ensure.That(context).IsNotNull();
+            EnsureArg.IsNotNull(context);
             _context = context;
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
@@ -18,8 +19,8 @@ namespace TramsA6.Controllers
 
         public TransportMeanController(ITransportMeanRepository repository, IUserRepository userRepository)
         {
-            Ensure.That(repository).IsNotNull();
-            Ensure.That(userRepository).IsNotNull();
+            EnsureArg.IsNotNull(repository);
+            EnsureArg.IsNotNull(userRepository);
             _repository = repository;
             _userRepository = userRepository;
         }
@@ -34,10 +35,14 @@ namespace TramsA6.Controllers
         public IActionResult AddMeanOfTransport([FromBody] CreateTransportMeanDTO createTransportMeanDTO)
         {
             if (createTransportMeanDTO == null)
+            {
                 return BadRequest();
+            }
 
             var meanOfTransport = Domain.Entities.TransportMean.Create(createTransportMeanDTO.IdentifyingCode,
                 new List<Comment>(), createTransportMeanDTO.Rating, createTransportMeanDTO.Location);
+            //var meanOfTransport = Mapper.Map(createTransportMeanDTO,);
+
             _repository.Add(meanOfTransport);
             return CreatedAtRoute("GetMeanOfTransportById", new {id = meanOfTransport.Id}, meanOfTransport);
         }
@@ -46,10 +51,15 @@ namespace TramsA6.Controllers
         public IActionResult GetMeanOfTransportById(Guid id)
         {
             if (id.Equals(Guid.Empty))
+            {
                 return BadRequest();
+            }
+
             var meanOfTransport = _repository.GetById(id);
             if (meanOfTransport == null)
+            {
                 return NotFound();
+            }
             return Ok(meanOfTransport);
         }
 
@@ -57,10 +67,15 @@ namespace TramsA6.Controllers
         public IActionResult Delete(Guid id)
         {
             if (id.Equals(Guid.Empty))
+            {
                 return BadRequest();
+            }
+
             var status = _repository.Delete(id);
             if (!status)
+            {
                 return NotFound();
+            }
             return NoContent();
         }
 
@@ -68,14 +83,24 @@ namespace TramsA6.Controllers
         public IActionResult Put(Guid id, [FromBody] UpdateTransportMeanDTO updateTransportMeanDto)
         {
             if (id.Equals(Guid.Empty))
+            {
                 return BadRequest();
+            }
             if (updateTransportMeanDto == null)
+            {
                 return BadRequest();
+            }
             var meanOfTransport = _repository.GetById(id);
             if (meanOfTransport == null)
-                return NotFound();
-            meanOfTransport.Update(meanOfTransport.IdentifyingCode, new List<Comment>(), updateTransportMeanDto.Rating,
-                updateTransportMeanDto.Location);
+            {
+                  return NotFound();
+            }
+
+            //meanOfTransport.Update(meanOfTransport.IdentifyingCode, new List<Comment>(), updateTransportMeanDto.Rating,
+            //  updateTransportMeanDto.Location);
+
+            meanOfTransport = Mapper.Map(updateTransportMeanDto, meanOfTransport);
+
             _repository.Update(meanOfTransport);
             return NoContent();
         }
@@ -85,12 +110,19 @@ namespace TramsA6.Controllers
         public IActionResult AddCommentToMeanOfTransport(Guid idMeanOfTransport, [FromBody] CreateCommentDTO comment)
         {
             if (idMeanOfTransport.Equals(Guid.Empty))
+            {
                 return BadRequest();
+            }
             if (comment == null)
+            {
                 return BadRequest();
+            }
             var meanOfTransport = _repository.GetById(idMeanOfTransport);
             if (meanOfTransport == null)
+            {
                 return NotFound();
+            }
+
             //todo: automapper
             Comment com = Comment.Create(meanOfTransport, _userRepository.GetById(comment.User), DateTime.Now,
                 comment.Text, 0, 0);
