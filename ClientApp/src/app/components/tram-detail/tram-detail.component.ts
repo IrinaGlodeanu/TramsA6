@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Tram } from "../tram";
+import { Tram } from '../../_services/tram/tram';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { TramService }  from '../tram.service';
+import { TramService } from '../../_services/tram/tram.service';
 
 @Component({
   selector: 'app-tram-detail',

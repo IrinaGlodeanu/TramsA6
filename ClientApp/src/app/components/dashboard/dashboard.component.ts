@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Tram } from '../tram';
-import { TramService } from '../tram.service';
+import { Tram } from '../../_services/tram/tram';
+import { TramService } from '../../_services/tram/tram.service';
 
 @Component({
   selector: 'app-dashboard',
