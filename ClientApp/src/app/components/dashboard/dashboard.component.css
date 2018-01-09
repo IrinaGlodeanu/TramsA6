@@ -24,7 +24,7 @@
   }
   .grid {
     display: flex;
-    flex-wrap: wrap;  
+    flex-wrap: wrap;
   }
   .col-1-4 {
     width: 25%;
@@ -62,3 +62,7 @@
       min-width: 60px;
     }
   }
+
+.back {
+  background-color: #fff;
+}

@@ -9,6 +9,7 @@ h2 {
   margin-top: 0;
   padding-top: 0;
 } */
+
 nav a {
   padding: 5px 10px;
   text-decoration: none;
@@ -31,3 +32,8 @@ nav a.active {
   color: #039be5;
 }
 
+.back {
+  background-color: #fff;
+  text-align: center;
+  margin:auto;
+}

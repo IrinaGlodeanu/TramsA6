@@ -89,8 +89,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         users.push(newUser);
         localStorage.setItem('users', JSON.stringify(users));
 
-        // respond 200 OK
-        return Observable.of(new HttpResponse({ status: 200 }));
+        // respond 201 OK
+        return Observable.of(new HttpResponse({ status: 201 }));
       }
 
       // delete user
@@ -110,8 +110,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             }
           }
 
-          // respond 200 OK
-          return Observable.of(new HttpResponse({ status: 200 }));
+          // respond 204 OK
+          return Observable.of(new HttpResponse({ status: 204 }));
         } else {
           // return 401 not authorised if token is null or invalid
           return Observable.throw('Unauthorised');
