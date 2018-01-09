@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AutoMapper;
-using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +24,9 @@ namespace TramsA6.Controllers
         public LoginController(IUserRepository userRepository, IAuthenticationService authenticationService,
             IConfiguration configuration)
         {
-            Ensure.That(userRepository).IsNotNull();
-            Ensure.That(authenticationService).IsNotNull();
-            Ensure.That(configuration).IsNotNull();
+            EnsureArg.IsNotNull(userRepository);
+            EnsureArg.IsNotNull(authenticationService);
+            EnsureArg.IsNotNull(configuration);
             _userRepository = userRepository;
             _authenticationService = authenticationService;
             _configuration = configuration;
@@ -40,13 +38,17 @@ namespace TramsA6.Controllers
             var email = model.Email;
 
             if (email == null)
+            {
                 return BadRequest();
+            }
 
             var user = _userRepository.GetUserByEmail(email);
 
             //todo custom exceptions
             if (user == null)
+            {
                 return NotFound("Login failed");
+            }
 
             if (_authenticationService.Login(email, model.Password))
             {
@@ -65,18 +67,19 @@ namespace TramsA6.Controllers
             var email = model.Email;
 
             if (email == null)
+            {
                 return BadRequest();
+            }
 
             var user = _userRepository.GetUserByEmail(email);
            
             if (user != null)
+            {
                 return BadRequest("The user with this email already exists");
+            }
 
-
-            //            var userToSave = Domain.Entities.User.Create(model.Name, model.Password, model.Username, model.Email, 0,
-            //                new List<Comment>());
-
-
+            //var userToSave = Domain.Entities.User.Create(model.Name, model.Password, model.Username, model.Email, 0,
+            //new List<Comment>());
 
             user = Mapper.Map(model, user);
 
@@ -96,7 +99,7 @@ namespace TramsA6.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat,
-                    new DateTimeOffset(now).ToUnixTimeSeconds().ToString())
+                new DateTimeOffset(now).ToUnixTimeSeconds().ToString())
                 // TODO: add additional claims here
             };
 

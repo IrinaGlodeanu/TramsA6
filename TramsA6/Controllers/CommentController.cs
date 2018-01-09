@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
@@ -15,7 +16,7 @@ namespace TramsA6.Controllers
 
         public CommentController(ICommentRepository repository)
         {
-            Ensure.That(repository).IsNotNull();
+            EnsureArg.IsNotNull(repository);
             _repository = repository;
         }
 
@@ -31,7 +32,10 @@ namespace TramsA6.Controllers
         {
             var comment = _repository.GetById(id);
             if (comment == null)
+            {
                 return NotFound();
+            }
+                
             return Ok(comment);
         }
 
@@ -40,7 +44,9 @@ namespace TramsA6.Controllers
         {
             var status = _repository.Delete(id);
             if (!status)
+            {
                 return NotFound();
+            }
             return NoContent();
         }
 
@@ -48,12 +54,21 @@ namespace TramsA6.Controllers
         public IActionResult Put(Guid id, [FromBody] UpdateCommentDTO updateCommentDto)
         {
             if (updateCommentDto == null)
+            {
                 return BadRequest();
+            }
+               
             var comment = _repository.GetById(id);
             if (comment == null)
+            {
                 return NotFound();
-            comment.Update(comment.TransportationMean, comment.User, DateTime.Now, updateCommentDto.Text, 0,
-                updateCommentDto.Rating);
+            }
+
+            //comment.Update(comment.TransportationMean, comment.User, DateTime.Now, updateCommentDto.Text, 0,
+            //  updateCommentDto.Rating);
+
+            comment = Mapper.Map(updateCommentDto, comment);
+
             _repository.Update(comment);
             return NoContent();
         }
