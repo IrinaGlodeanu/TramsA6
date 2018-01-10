@@ -9,6 +9,7 @@ namespace IntegrationTests
     {
         private IConfiguration _configuration;
 
+        protected virtual bool UseSqlServer => bool.Parse(_configuration["UseSqlServer"]);
 
         public BaseIntegrationTest()
         {
@@ -17,26 +18,23 @@ namespace IntegrationTests
             CreateDatabase();
         }
 
-        protected virtual bool UseSqlServer => bool.Parse(_configuration["UseSqlServer"]);
-
-        public void Dispose()
-        {
-            DestroyDatabase();
-        }
-
         public void RunOnDatabase(Action<DatabaseContext> databaseAction)
         {
             if (UseSqlServer)
+            {
                 RunOnSqlServer(databaseAction);
+            }
             else
+            {
                 RunOnMemory(databaseAction);
+            }
         }
 
         private void RunOnSqlServer(Action<DatabaseContext> databaseAction)
         {
             var options = new DbContextOptionsBuilder<DatabaseContext>()
-                .UseSqlServer(_configuration.GetConnectionString("UsersConnectionString"))
-                .Options;
+                    .UseSqlServer(_configuration.GetConnectionString("UsersConnectionString"))
+                    .Options;
 
             using (var context = new DatabaseContext(options))
             {
@@ -47,8 +45,8 @@ namespace IntegrationTests
         private void RunOnMemory(Action<DatabaseContext> databaseAction)
         {
             var options = new DbContextOptionsBuilder<DatabaseContext>()
-                .UseInMemoryDatabase("UsersConnectionString")
-                .Options;
+                    .UseInMemoryDatabase("UsersConnectionString")
+                    .Options;
 
             using (var context = new DatabaseContext(options))
             {
@@ -70,6 +68,11 @@ namespace IntegrationTests
         private void DestroyDatabase()
         {
             RunOnDatabase(context => context.Database.EnsureDeleted());
+        }
+
+        public void Dispose()
+        {
+            DestroyDatabase();
         }
     }
 }
