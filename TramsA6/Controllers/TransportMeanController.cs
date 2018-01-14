@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TramsA6.DTOS;
 using TramsA6.DTOS.CommentModels;
 using TramsA6.DTOS.TransportMeanModels;
 
@@ -15,15 +14,16 @@ namespace TramsA6.Controllers
     [Route("api/MeansOfTransport")]
     public class TransportMeanController : Controller
     {
+        private readonly ICommentRepository _commentRepository;
         private readonly ITransportMeanRepository _repository;
-        private readonly IUserRepository _userRepository;
 
-        public TransportMeanController(ITransportMeanRepository repository, IUserRepository userRepository)
+
+        public TransportMeanController(ITransportMeanRepository repository, ICommentRepository commentRepository)
         {
             EnsureArg.IsNotNull(repository);
-            EnsureArg.IsNotNull(userRepository);
+            EnsureArg.IsNotNull(commentRepository);
             _repository = repository;
-            _userRepository = userRepository;
+            _commentRepository = commentRepository;
         }
 
         [HttpGet]
@@ -33,7 +33,6 @@ namespace TramsA6.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public IActionResult AddMeanOfTransport([FromBody] CreateTransportMeanDTO createTransportMeanDTO)
         {
             if (createTransportMeanDTO == null)
@@ -41,9 +40,10 @@ namespace TramsA6.Controllers
                 return BadRequest();
             }
 
-            var meanOfTransport = Domain.Entities.TransportMean.Create(createTransportMeanDTO.IdentifyingCode,
-                new List<Comment>(), createTransportMeanDTO.Rating, createTransportMeanDTO.Location);
-            //var meanOfTransport = Mapper.Map(createTransportMeanDTO,);
+            var meanOfTransport = TransportMean.Create(createTransportMeanDTO.IdentifyingCode,
+                new List<Comment>(), createTransportMeanDTO.Rating, createTransportMeanDTO.Location,
+                createTransportMeanDTO.LineNumber);
+
 
             _repository.Add(meanOfTransport);
             return CreatedAtRoute("GetMeanOfTransportById", new {id = meanOfTransport.Id}, meanOfTransport);
@@ -66,7 +66,6 @@ namespace TramsA6.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
         public IActionResult Delete(Guid id)
         {
             if (id.Equals(Guid.Empty))
@@ -83,7 +82,6 @@ namespace TramsA6.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize]
         public IActionResult Put(Guid id, [FromBody] UpdateTransportMeanDTO updateTransportMeanDto)
         {
             if (id.Equals(Guid.Empty))
@@ -97,11 +95,8 @@ namespace TramsA6.Controllers
             var meanOfTransport = _repository.GetById(id);
             if (meanOfTransport == null)
             {
-                  return NotFound();
+                return NotFound();
             }
-
-            //meanOfTransport.Update(meanOfTransport.IdentifyingCode, new List<Comment>(), updateTransportMeanDto.Rating,
-            //  updateTransportMeanDto.Location);
 
             meanOfTransport = Mapper.Map(updateTransportMeanDto, meanOfTransport);
 
@@ -111,28 +106,67 @@ namespace TramsA6.Controllers
 
 
         [HttpPut("{idMeanOfTransport}/comment")]
-        [Authorize]
         public IActionResult AddCommentToMeanOfTransport(Guid idMeanOfTransport, [FromBody] CreateCommentDTO comment)
         {
             if (idMeanOfTransport.Equals(Guid.Empty))
             {
                 return BadRequest();
             }
+
             if (comment == null)
             {
                 return BadRequest();
             }
+
             var meanOfTransport = _repository.GetById(idMeanOfTransport);
             if (meanOfTransport == null)
             {
                 return NotFound();
             }
 
-            //todo: automapper
-            Comment com = Comment.Create(meanOfTransport, _userRepository.GetById(comment.User), DateTime.Now,
+            var com = Comment.Create(meanOfTransport.Id, comment.UserId, DateTime.Now,
                 comment.Text, 0, 0);
 
-            meanOfTransport.Comments.Append(com);
+            _commentRepository.Add(com);
+
+            return NoContent();
+        }
+
+        [HttpGet("/line/{numberOfLine}")]
+        public IActionResult GetMeanOfTransportByLine(int numberOfLine)
+        {
+            if (numberOfLine == 0)
+            {
+                BadRequest();
+            }
+
+            var meanOfTransport = _repository.GetMeansOTransportByLineNumber(numberOfLine);
+            if (meanOfTransport == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(meanOfTransport);
+        }
+
+        [HttpPut("{idMeanOfTransport}/rating")]
+        public IActionResult SetRatingForMeanOfTransport(Guid idMeanOfTransport, [FromBody] EditTrustDto editTrustDto)
+        {
+            EnsureArg.IsNotNull(idMeanOfTransport);
+            if (editTrustDto == null)
+            {
+                return BadRequest();
+            }
+
+            var user = _repository.GetById(idMeanOfTransport);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.EditRating(editTrustDto.Trust);
+
+            _repository.Update(user);
             return NoContent();
         }
     }

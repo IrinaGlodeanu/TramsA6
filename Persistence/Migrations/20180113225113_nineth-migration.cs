@@ -2,21 +2,22 @@
 
 namespace Persistence.Migrations
 {
-    public partial class thirdMigration : Migration
+    public partial class ninethmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<byte[]>(
-                "Salt",
-                "Users",
-                nullable: true);
+            migrationBuilder.AddColumn<int>(
+                "LineNumber",
+                "MeansOfTransport",
+                nullable: false,
+                defaultValue: 0);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                "Salt",
-                "Users");
+                "LineNumber",
+                "MeansOfTransport");
         }
     }
 }

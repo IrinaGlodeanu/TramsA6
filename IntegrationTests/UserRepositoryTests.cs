@@ -1,12 +1,8 @@
-using Xunit;
-using BusinessLayer;
-using FluentAssertions;
-
 namespace IntegrationTests
 {
-   public class UserRepositoryTests :BaseIntegrationTest
+    public class UserRepositoryTests : BaseIntegrationTest
     {
-       /* [Fact]
+        /* [Fact]
         public void Un_test()
         {
             RunOnDatabase(context =>
@@ -20,5 +16,5 @@ namespace IntegrationTests
             });
             
         }    */
-    }  
+    }
 }
