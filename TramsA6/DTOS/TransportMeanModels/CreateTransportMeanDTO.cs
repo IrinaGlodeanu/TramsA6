@@ -8,8 +8,11 @@ namespace TramsA6.DTOS.TransportMeanModels
     {
         public string IdentifyingCode { get; set; }
 
-        [Range(1, 5), DefaultValue(0)]
+        [Range(1, 5)]
+        [DefaultValue(0)]
         public double Rating { get; set; }
+
+        public int LineNumber { get; set; }
 
         public Coordinates Location { get; set; }
     }

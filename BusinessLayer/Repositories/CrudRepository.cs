@@ -4,6 +4,7 @@ using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
 using EnsureThat;
+using Microsoft.EntityFrameworkCore;
 using Persistence.PersistenceFolder;
 
 namespace BusinessLayer.Repositories
@@ -18,14 +19,14 @@ namespace BusinessLayer.Repositories
             _context = context;
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
-            return _context.Set<TEntity>().ToList();
+            return _context.Set<TEntity>().AsNoTracking().ToList();
         }
 
-        public TEntity GetById(Guid id)
+        public virtual TEntity GetById(Guid id)
         {
-            return _context.Set<TEntity>().Find(id);
+            return _context.Set<TEntity>().AsNoTracking().FirstOrDefault(x => x.Id == id);
         }
 
         public void Add(TEntity entity)

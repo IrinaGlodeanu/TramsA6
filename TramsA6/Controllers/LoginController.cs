@@ -16,9 +16,9 @@ namespace TramsA6.Controllers
     [Route("api/AuthController")]
     public class LoginController : Controller
     {
-        private readonly IUserRepository _userRepository;
         private readonly IAuthenticationService _authenticationService;
         private readonly IConfiguration _configuration;
+        private readonly IUserRepository _userRepository;
 
 
         public LoginController(IUserRepository userRepository, IAuthenticationService authenticationService,
@@ -44,7 +44,6 @@ namespace TramsA6.Controllers
 
             var user = _userRepository.GetUserByEmail(email);
 
-            //todo custom exceptions
             if (user == null)
             {
                 return NotFound("Login failed");
@@ -72,7 +71,7 @@ namespace TramsA6.Controllers
             }
 
             var user = _userRepository.GetUserByEmail(email);
-           
+
             if (user != null)
             {
                 return BadRequest("The user with this email already exists");
@@ -85,7 +84,7 @@ namespace TramsA6.Controllers
 
             _authenticationService.Register(user, model.Password);
 
-            var userCreationResponseDto =new UserCreationResponseDTO();
+            var userCreationResponseDto = new UserCreationResponseDTO();
             userCreationResponseDto = Mapper.Map(user, userCreationResponseDto);
             return Ok(userCreationResponseDto);
         }
@@ -93,7 +92,7 @@ namespace TramsA6.Controllers
 
         private ResponseTokenDTO CreateAccessToken(Guid userId)
         {
-            DateTime now = DateTime.Now;
+            var now = DateTime.Now;
 
             // add the registered claims for JWT (RFC7519).
             // For more info, see https://tools.ietf.org/html/rfc7519#section-4.1
@@ -102,8 +101,7 @@ namespace TramsA6.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat,
-                new DateTimeOffset(now).ToUnixTimeSeconds().ToString())
-                // TODO: add additional claims here
+                    new DateTimeOffset(now).ToUnixTimeSeconds().ToString())
             };
 
             var tokenExpirationMins =
@@ -112,12 +110,12 @@ namespace TramsA6.Controllers
                 Encoding.UTF8.GetBytes(_configuration["Auth:Jwt:Key"]));
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["Auth:Jwt:Issuer"],
-                audience: _configuration["Auth:Jwt:Audience"],
-                claims: claims,
-                notBefore: now,
-                expires: now.Add(TimeSpan.FromMinutes(tokenExpirationMins)),
-                signingCredentials: new SigningCredentials(
+                _configuration["Auth:Jwt:Issuer"],
+                _configuration["Auth:Jwt:Audience"],
+                claims,
+                now,
+                now.Add(TimeSpan.FromMinutes(tokenExpirationMins)),
+                new SigningCredentials(
                     issuerSigningKey, SecurityAlgorithms.HmacSha256)
             );
             var encodedToken = new JwtSecurityTokenHandler().WriteToken(token);

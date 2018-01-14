@@ -13,7 +13,7 @@ namespace Domain.Entities
         [MaxLength(25)]
         public string Name { get; private set; }
 
-        public string Password { get; private set; } 
+        public string Password { get; private set; }
 
         public byte[] Salt { get; private set; }
 
@@ -23,8 +23,9 @@ namespace Domain.Entities
 
         public double Trust { get; private set; }
 
-        public List<Comment> Comments { get; private set; }
+        public int NumberOfVotes { get; private set; }
 
+        public List<Comment> Comments { get; private set; }
 
         public static User Create(string name, string password, string username, string email, double trust,
             List<Comment> comments)
@@ -57,6 +58,21 @@ namespace Domain.Entities
         {
             Password = password;
             Salt = salt;
+        }
+
+        public void AddCommentToList(Comment com)
+        {
+            if (Comments == null)
+            {
+                Comments = new List<Comment>();
+            }
+            Comments.Add(com);
+        }
+
+        public void EditTrust(double newValue)
+        {
+            NumberOfVotes = NumberOfVotes + 1;
+            Trust = (Trust + newValue) / NumberOfVotes;
         }
     }
 }

@@ -76,22 +76,18 @@ namespace TramsA6
                     };
                     cfg.IncludeErrorDetails = true;
                 });
-            
-            
-            services.AddAntiforgery(options => {
-                options.HeaderName = "X-XSRF-TOKEN";
-            });
-            
 
+
+            services.AddAntiforgery(options => { options.HeaderName = "X-XSRF-TOKEN"; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IAntiforgery antiforgery)
         {
-
             //Manually handle setting XSRF cookie. Needed because HttpOnly has to be set to false so that
             //Angular is able to read/access the cookie.
-            app.Use((context, next) => { 
+            app.Use((context, next) =>
+            {
                 if (context.Request.Method == HttpMethods.Get &&
                     (string.Equals(context.Request.Path.Value, "/", StringComparison.OrdinalIgnoreCase) ||
                      string.Equals(context.Request.Path.Value, "/home/index", StringComparison.OrdinalIgnoreCase)))
@@ -99,12 +95,12 @@ namespace TramsA6
                     var tokens = antiforgery.GetAndStoreTokens(context);
                     context.Response.Cookies.Append("XSRF-TOKEN",
                         tokens.RequestToken,
-                        new CookieOptions { HttpOnly = false });
+                        new CookieOptions {HttpOnly = false});
                 }
 
                 return next();
             });
-            
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -112,7 +108,9 @@ namespace TramsA6
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Too V1"); });
 
             if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
+            }
 
             app.UseMvc();
         }

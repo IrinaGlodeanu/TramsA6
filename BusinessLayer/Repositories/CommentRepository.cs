@@ -18,19 +18,19 @@ namespace BusinessLayer.Repositories
 
         public IReadOnlyList<Comment> GetUserComments(Guid userId)
         {
-            return _context.Comments.Where(c => c.User.Id == userId).ToList();
+            return _context.Comments.Where(c => c.UserId == userId).ToList();
         }
 
         public IReadOnlyList<Comment> GetTransportComments(Guid transportationId)
         {
-            return _context.Comments.Where(c => c.TransportationMean.Id == transportationId).ToList();
+            return _context.Comments.Where(c => c.TransportMeanId == transportationId).ToList();
         }
 
         public IReadOnlyList<Comment> GetLastPeriodTransportComments(int numberOfMinutes, Guid transportationId)
         {
-            DateTime maxTime = DateTime.Now.Subtract(TimeSpan.FromMinutes(numberOfMinutes));
+            var maxTime = DateTime.Now.Subtract(TimeSpan.FromMinutes(numberOfMinutes));
 
-            return _context.Comments.Where(t => t.CreationDate > maxTime && t.TransportationMean.Id == transportationId)
+            return _context.Comments.Where(t => t.CreationDate > maxTime && t.TransportMeanId == transportationId)
                 .ToList();
         }
     }

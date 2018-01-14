@@ -12,6 +12,5 @@ namespace TramsA6.Filters
                 context.Result = new BadRequestObjectResult(context.ModelState);
             }
         }
-        
     }
 }
