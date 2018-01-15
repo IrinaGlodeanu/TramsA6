@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Persistence;
 using Persistence.PersistenceFolder;
 using Swashbuckle.AspNetCore.Swagger;
 using TramsA6.Filters;
@@ -79,6 +80,7 @@ namespace TramsA6
 
 
             services.AddAntiforgery(options => { options.HeaderName = "X-XSRF-TOKEN"; });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -113,6 +115,16 @@ namespace TramsA6
             }
 
             app.UseMvc();
+            
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<DatabaseContext>();
+
+                // Create the Db if it doesn't exist and applies any pending migration.
+               // dbContext.Database.Migrate();
+
+                DbSeeder.Seed(dbContext);
+            }
         }
     }
 }
