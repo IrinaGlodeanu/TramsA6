@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { AlertComponent } from './components/alert/alert.component';
 
 @Component({
   selector: 'app-root',

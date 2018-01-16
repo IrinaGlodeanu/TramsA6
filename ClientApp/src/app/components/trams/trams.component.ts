@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Tram } from '../../_services/tram/tram';
-import { TramService } from "../../_services/tram/tram.service";
+import { TramService } from '../../_services/tram/tram.service';
 
 @Component({
   selector: 'app-trams',
