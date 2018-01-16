@@ -1,6 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container-fluid">
   <div style="text-align:center">
+    <app-alert></app-alert>
     <div class="back" *ngIf="IsLoggedIn()">
       <div class="page-header">
         <h1 class="text-center">{{ title }}</h1>
@@ -12,6 +13,7 @@
         <p><a [routerLink]="['/login']">Logout</a></p>
       </nav>
     </div>
+
     <router-outlet></router-outlet>
     <!-- <app-messages></app-messages> -->
   </div>
