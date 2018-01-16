@@ -2,32 +2,34 @@
     <div class="container-fluid">
         <h4>Tram {{ tram.no }}</h4>
         <div class="row">
-            <div class="col-xs-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title text-center">Tardiness</h3>
+                    <div class="panel-heading row">
+                        <div class="col-sm-2"><h1>No.</h1></div>
+                        <div class="col-sm-3 text-center"><h1>Tardiness</h1></div>
+                        <div class="col-sm-3"><h1>Actual location</h1></div>
+                        <div class ="col-sm-3"><h1>Ocupation</h1></div>
                     </div>
-                    <div class="panel-body bg-danger">
-                        20 min
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title text-center">Occupation</h3>
-                  </div>
-                  <div class="panel-body">
-                      <div class="progress center-block">
-                          <div class="progress-bar progress-bar-success center-block" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                            <span class="sr-only">40% Complete (success)</span>
-                          </div>
-                        </div>
-                  </div>
-                </div>
-          </div>
+                    
+                            <div class ="col-sm-2"><p>1</p></div>
+                            <div class ="col-sm-3"><p> 20 min</p></div>
+                            <div class ="col-sm-3"><p>Tg. Cucu</p></div>
+                            <div class="progress center-block">
+                                <div class="progress-bar progress-bar-success center-block" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                    <span class="sr-only">40% Complete (success)</span>
+                                </div>
+                            </div>
 
-  </div>
+                            <div class ="col-sm-2"><p>2</p></div>
+                            <div class ="col-sm-3"><p> 5 min</p></div>
+                            <div class ="col-sm-3"><p>Dancu</p></div>
+                            <div class="progress center-block">
+                                <div class="progress-bar progress-bar-success center-block" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                    <span class="sr-only">70% Complete (success)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
   <button (click)="goBack()">Go back</button>
   </div>
   </div>

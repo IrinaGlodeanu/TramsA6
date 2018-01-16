@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Tram } from '../../_services/tram/tram';
+import { RunningTram } from '../../_services/tram/running-tram';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TramService } from '../../_services/tram/tram.service';
+import { RunningTramService } from '../../_services/tram/running-tram.service';
 
 @Component({
   selector: 'app-tram-detail',
@@ -13,6 +15,8 @@ import { TramService } from '../../_services/tram/tram.service';
 })
 export class TramDetailComponent implements OnInit {
   @Input() tram: Tram;
+
+  @Input() runningTram: RunningTram;
 
   constructor(
     private route: ActivatedRoute,
