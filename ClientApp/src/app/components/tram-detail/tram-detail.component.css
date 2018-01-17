@@ -28,3 +28,6 @@ label {
     color: #ccc;
     cursor: auto;
   }
+  h1{
+    font-size: 25px;
+  }

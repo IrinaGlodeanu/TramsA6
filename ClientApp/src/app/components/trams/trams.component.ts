@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Tram } from '../../_services/tram/tram';
+import { RunningTram } from '../../_services/tram/running-tram';
+
 import { TramService } from '../../_services/tram/tram.service';
+import { RunningTramService } from '../../_services/tram/running-tram.service';
 
 @Component({
   selector: 'app-trams',
@@ -11,6 +14,7 @@ import { TramService } from '../../_services/tram/tram.service';
 export class TramsComponent implements OnInit {
 
   trams: Tram[];
+  runningTrams: RunningTram[];
 
   constructor(private tramService: TramService) { }
 
@@ -22,4 +26,5 @@ export class TramsComponent implements OnInit {
     this.tramService.getTrams()
         .subscribe(trams => this.trams = trams);
   }
+
 }
